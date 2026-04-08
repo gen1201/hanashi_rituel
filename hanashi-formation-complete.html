@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HANASHI 話 — Formation Rituel Maître</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;600;800&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;1,200;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --n:#07080c;--n2:#0d0f16;
+  --laque:#7a2e20;--laque-m:#a34535;--laque-c:#c4695a;--laque-p:#dda090;
+  --jade:#3d7259;--jade-m:#4f9070;--jade-c:#6aad89;--jade-p:#a8cdb8;
+  --or:#b8914a;--or-m:#cfa85e;--or-c:#e0c278;--or-p:#f0dca8;
+  --soie:#f2ebe0;--brun:#130d07;--brun2:#1c1208;--brun3:#281a0e;
+  --t:#e5d8c8;--t2:#9a8070;--t3:#6a5848;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--n);color:var(--t);font-family:'Mulish',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* ═══ SPLASH ═══ */
+#splash{position:fixed;inset:0;background:var(--brun);z-index:9999;display:flex;align-items:center;justify-content:center;transition:opacity 1.4s ease,visibility 1.4s;}
+#splash.out{opacity:0;visibility:hidden;pointer-events:none;}
+.sp-bg{position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 15% 80%,rgba(122,46,32,.2),transparent),radial-gradient(ellipse 50% 60% at 85% 20%,rgba(61,114,89,.14),transparent),radial-gradient(ellipse 30% 25% at 50% 50%,rgba(184,145,74,.07),transparent);}
+.sp-tex{position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;}
+.vap-w{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.vl{position:absolute;bottom:0;border-radius:4px;background:linear-gradient(to top,transparent,rgba(242,235,224,.1),transparent);animation:vr 8s ease-in-out infinite;}
+.vl:nth-child(1){left:7%;width:1px;height:55%;animation-delay:0s;animation-duration:6s;}
+.vl:nth-child(2){left:18%;width:2px;height:68%;animation-delay:1.8s;animation-duration:9s;}
+.vl:nth-child(3){left:33%;width:1px;height:45%;animation-delay:.9s;animation-duration:6.5s;}
+.vl:nth-child(4){left:50%;width:2px;height:72%;animation-delay:2.5s;animation-duration:8s;}
+.vl:nth-child(5){left:64%;width:1px;height:50%;animation-delay:.4s;animation-duration:7s;}
+.vl:nth-child(6){left:79%;width:2px;height:62%;animation-delay:2s;animation-duration:7.5s;}
+.vl:nth-child(7){left:91%;width:1px;height:48%;animation-delay:1.2s;animation-duration:6.2s;}
+@keyframes vr{0%{transform:translateY(0) scaleX(1);opacity:0;}18%{opacity:1;}72%{transform:translateY(-88vh) scaleX(5);opacity:.25;}100%{transform:translateY(-100vh) scaleX(1);opacity:0;}}
+.sp-k-bg{position:absolute;font-family:'Shippori Mincho B1',serif;font-size:38vw;color:rgba(242,235,224,.015);top:50%;left:50%;transform:translate(-50%,-50%);line-height:1;user-select:none;pointer-events:none;}
+.sp-c{position:relative;z-index:2;text-align:center;padding:2rem;}
+.sp-pre{font-size:.6rem;letter-spacing:.6em;text-transform:uppercase;color:var(--jade-c);margin-bottom:1.4rem;opacity:0;animation:fu 1s ease .4s forwards;}
+.sp-title{font-family:'Shippori Mincho B1',serif;font-size:clamp(4rem,15vw,11rem);font-weight:400;color:var(--soie);letter-spacing:.12em;line-height:1;opacity:0;animation:fu 1s ease .7s forwards;}
+.sp-k{font-family:'Shippori Mincho B1',serif;color:var(--laque-c);font-size:clamp(1.6rem,3.5vw,2.8rem);margin-left:.5rem;vertical-align:middle;}
+.sp-line{width:1px;height:70px;background:linear-gradient(to bottom,transparent,var(--or-m),transparent);margin:2rem auto;opacity:0;animation:fu 1s ease 1s forwards;}
+.sp-sub{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--t2);line-height:2.2;opacity:0;animation:fu 1s ease 1.2s forwards;}
+.sp-enter{margin-top:2.5rem;background:transparent;border:1px solid rgba(184,145,74,.35);color:var(--or-p);font-family:'Mulish',sans-serif;font-weight:300;font-size:.66rem;letter-spacing:.5em;text-transform:uppercase;padding:1rem 3.2rem;cursor:pointer;transition:all .4s;opacity:0;animation:fu 1s ease 1.7s forwards;}
+.sp-enter:hover{background:rgba(184,145,74,.08);border-color:var(--or-m);}
+@keyframes fu{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+/* ═══ APP ═══ */
+#app{display:none;min-height:100vh;}
+#app.on{display:flex;}
+
+/* Sidebar */
+.sb{width:285px;flex-shrink:0;background:var(--brun2);min-height:100vh;position:sticky;top:0;height:100vh;overflow-y:auto;border-right:1px solid rgba(184,145,74,.09);display:flex;flex-direction:column;}
+.sb::-webkit-scrollbar{width:3px;}
+.sb::-webkit-scrollbar-thumb{background:rgba(184,145,74,.2);}
+.sb-head{padding:2.2rem 1.8rem 1.6rem;border-bottom:1px solid rgba(184,145,74,.07);}
+.sb-logo{font-family:'Shippori Mincho B1',serif;font-size:1.55rem;font-weight:400;color:var(--soie);letter-spacing:.12em;}
+.sb-lk{color:var(--laque-c);font-size:1.15rem;margin-left:.3rem;}
+.sb-tag{font-size:.56rem;letter-spacing:.35em;text-transform:uppercase;color:var(--t3);margin-top:.4rem;}
+.sb-prog{padding:1.2rem 1.8rem;border-bottom:1px solid rgba(184,145,74,.05);}
+.pt{height:1px;background:rgba(184,145,74,.1);position:relative;margin-bottom:.5rem;}
+.pf{height:100%;background:linear-gradient(to right,var(--laque-m),var(--or-m));transition:width .6s ease;width:0%;position:absolute;top:0;left:0;}
+.pl{font-size:.58rem;letter-spacing:.2em;color:var(--t3);}
+.sb-nav{flex:1;padding:.5rem 0;}
+.sb-sec{font-size:.54rem;letter-spacing:.45em;text-transform:uppercase;color:var(--jade-c);padding:.9rem 1.8rem .3rem;opacity:.6;}
+.ni{display:flex;align-items:center;gap:.75rem;padding:.7rem 1.8rem;cursor:pointer;border-left:2px solid transparent;font-size:.74rem;color:var(--t2);transition:all .25s;line-height:1.35;}
+.ni:hover{color:var(--soie);background:rgba(184,145,74,.03);}
+.ni.active{color:var(--or-p);border-left-color:var(--or-m);background:rgba(184,145,74,.06);}
+.ni.done{color:var(--jade-p);}
+.ni.done .chk{background:var(--jade-m);border-color:var(--jade-m);color:#fff;}
+.sn{font-family:'Shippori Mincho B1',serif;font-size:.95rem;color:var(--laque-c);opacity:.5;min-width:20px;}
+.ni.active .sn{opacity:1;}
+.chk{margin-left:auto;width:14px;height:14px;border-radius:50%;border:1px solid rgba(184,145,74,.22);display:flex;align-items:center;justify-content:center;font-size:7px;flex-shrink:0;}
+.sb-bot{padding:1.5rem 1.8rem;border-top:1px solid rgba(184,145,74,.05);}
+.sb-dur{font-size:.6rem;letter-spacing:.15em;color:var(--t3);}
+.sb-dur strong{display:block;font-family:'Shippori Mincho B1',serif;font-size:1.5rem;font-weight:400;color:var(--or-m);letter-spacing:.05em;margin-bottom:.2rem;}
+.sb-price{font-size:.75rem;color:var(--or-p);font-family:'Shippori Mincho B1',serif;margin-top:.3rem;}
+
+/* ═══ MAIN ═══ */
+.main{flex:1;overflow-y:auto;min-height:100vh;background:var(--n);}
+.mod{display:none;animation:si .5s ease;}
+.mod.active{display:block;}
+@keyframes si{from{opacity:0;transform:translateX(12px);}to{opacity:1;transform:translateX(0);}}
+
+/* Hero */
+.hero{padding:5rem 4.5rem 3.5rem;position:relative;overflow:hidden;border-bottom:1px solid rgba(184,145,74,.06);}
+.hero::before{content:'';position:absolute;top:-30%;right:-8%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(122,46,32,.07),transparent 65%);pointer-events:none;}
+.hk{position:absolute;right:3.5rem;top:1.5rem;font-family:'Shippori Mincho B1',serif;font-size:9rem;color:rgba(242,235,224,.03);line-height:1;user-select:none;pointer-events:none;}
+.ht{font-size:.58rem;letter-spacing:.5em;text-transform:uppercase;color:var(--laque-c);margin-bottom:1rem;}
+.hti{font-family:'Shippori Mincho B1',serif;font-size:clamp(2.1rem,4vw,3.3rem);font-weight:400;color:var(--soie);line-height:1.12;max-width:640px;}
+.hti em{color:var(--or-c);font-style:italic;font-family:'Mulish',sans-serif;font-weight:200;}
+.hi{margin-top:1.2rem;font-size:.83rem;color:var(--t2);max-width:560px;line-height:1.95;}
+.bgs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem;}
+.bg{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .82rem;border-radius:20px;}
+.bl{border:1px solid rgba(122,46,32,.4);color:var(--laque-p);}
+.bj{border:1px solid rgba(61,114,89,.4);color:var(--jade-c);}
+.bo{border:1px solid rgba(184,145,74,.4);color:var(--or-p);}
+
+/* Body */
+.body{padding:3rem 4.5rem;max-width:960px;}
+h2.st{font-family:'Shippori Mincho B1',serif;font-size:1.5rem;font-weight:400;color:var(--or-p);margin:2.8rem 0 1.2rem;}
+h2.st:first-child{margin-top:0;}
+p{font-size:.84rem;line-height:1.95;color:var(--t2);margin-bottom:.9rem;}
+.hl{color:var(--or-p);}.hlj{color:var(--jade-p);}.hlr{color:var(--laque-p);}
+
+/* Grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:1rem;margin:1.5rem 0;}
+.card{background:var(--brun3);border:1px solid rgba(184,145,74,.08);border-radius:2px;padding:1.5rem;transition:all .3s;}
+.card:hover{border-color:rgba(184,145,74,.22);transform:translateY(-2px);}
+.ci{font-size:1.3rem;margin-bottom:.7rem;}
+.ct{font-family:'Shippori Mincho B1',serif;font-size:.95rem;color:var(--or-p);margin-bottom:.5rem;}
+.card p{font-size:.75rem;margin:0;}
+
+/* Steps */
+.steps{margin:1.5rem 0;}
+.step{display:flex;gap:1.4rem;padding:1.3rem 0;border-bottom:1px solid rgba(184,145,74,.06);align-items:flex-start;}
+.step:last-child{border-bottom:none;}
+.snum{font-family:'Shippori Mincho B1',serif;font-size:2rem;font-weight:400;color:var(--laque-c);opacity:.4;line-height:1;min-width:40px;}
+.sbody{flex:1;}
+.st2{font-size:.86rem;font-weight:500;color:var(--soie);margin-bottom:.35rem;letter-spacing:.03em;}
+.step p{font-size:.77rem;margin:0;}
+.stag{font-size:.56rem;letter-spacing:.2em;padding:.26rem .72rem;border-radius:20px;white-space:nowrap;align-self:center;flex-shrink:0;}
+.tr{border:1px solid rgba(122,46,32,.35);color:var(--laque-p);}
+.tj{border:1px solid rgba(61,114,89,.35);color:var(--jade-c);}
+.to{border:1px solid rgba(184,145,74,.35);color:var(--or-p);}
+
+/* Info */
+.info{border-left:2px solid var(--or-m);padding:1.2rem 1.5rem;background:rgba(184,145,74,.04);margin:1.5rem 0;border-radius:0 2px 2px 0;}
+.info.j{border-left-color:var(--jade-m);background:rgba(61,114,89,.04);}
+.info.r{border-left-color:var(--laque-m);background:rgba(122,46,32,.04);}
+.it{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--or-m);margin-bottom:.5rem;}
+.info.j .it{color:var(--jade-c);}
+.info.r .it{color:var(--laque-p);}
+.info p{font-size:.79rem;margin:0;}
+
+/* Table */
+.tbl{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.78rem;}
+.tbl th{text-align:left;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--jade-c);padding:.7rem 1rem;border-bottom:1px solid rgba(184,145,74,.1);font-weight:400;}
+.tbl td{padding:.8rem 1rem;color:var(--t2);border-bottom:1px solid rgba(184,145,74,.05);vertical-align:top;}
+.tbl tr:hover td{background:rgba(184,145,74,.02);}
+.tn{color:var(--soie);font-weight:400;}
+.pill{font-size:.55rem;letter-spacing:.15em;padding:.2rem .55rem;border-radius:10px;white-space:nowrap;border:1px solid rgba(184,145,74,.2);color:var(--or-p);background:rgba(184,145,74,.04);}
+
+/* Outil card */
+.outils-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1rem;margin:1.5rem 0;}
+.outil{background:var(--brun3);border:1px solid rgba(184,145,74,.1);border-radius:2px;padding:1.6rem;position:relative;overflow:hidden;transition:all .3s;}
+.outil::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--or-m),transparent);opacity:0;transition:opacity .3s;}
+.outil:hover{border-color:rgba(184,145,74,.25);transform:translateY(-2px);}
+.outil:hover::before{opacity:1;}
+.outil-k{font-family:'Shippori Mincho B1',serif;font-size:1.8rem;color:rgba(184,145,74,.2);position:absolute;right:1rem;top:.8rem;line-height:1;user-select:none;}
+.outil-o{font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;color:var(--jade-c);margin-bottom:.5rem;}
+.outil-n{font-family:'Shippori Mincho B1',serif;font-size:1.05rem;color:var(--or-p);margin-bottom:.6rem;line-height:1.3;}
+.outil-m{font-size:.65rem;letter-spacing:.15em;color:var(--laque-p);margin-bottom:.7rem;text-transform:uppercase;}
+.outil p{font-size:.76rem;margin:0;line-height:1.75;}
+.outil-u{margin-top:.9rem;padding-top:.9rem;border-top:1px solid rgba(184,145,74,.08);font-size:.68rem;color:var(--t3);}
+.outil-u strong{color:var(--or-m);font-weight:400;}
+
+/* Produit card */
+.produit-card{background:var(--brun3);border:1px solid rgba(184,145,74,.09);border-radius:2px;padding:1.4rem;position:relative;overflow:hidden;transition:all .3s;margin-bottom:.8rem;}
+.produit-card:hover{border-color:rgba(184,145,74,.2);transform:translateY(-1px);}
+.produit-card::after{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--or-m);}
+.produit-card.jade::after{background:var(--jade-m);}
+.produit-card.laque::after{background:var(--laque-m);}
+.produit-nom{font-family:'Shippori Mincho B1',serif;font-size:1rem;color:var(--or-p);margin-bottom:.25rem;}
+.produit-marque{font-size:.62rem;letter-spacing:.25em;text-transform:uppercase;color:var(--laque-p);margin-bottom:.5rem;}
+.produit-card p{font-size:.77rem;margin:0 0 .35rem;}
+.produit-card p:last-child{margin:0;}
+.produit-detail{font-size:.7rem;color:var(--t3);letter-spacing:.05em;}
+.produit-detail strong{color:var(--or-m);font-weight:400;}
+
+/* Proto step */
+.proto-step{display:grid;grid-template-columns:42px 1fr auto;gap:1.2rem;padding:1.4rem 0;border-bottom:1px solid rgba(184,145,74,.06);align-items:start;}
+.proto-step:last-child{border-bottom:none;}
+.pn{font-family:'Shippori Mincho B1',serif;font-size:2rem;font-weight:400;color:var(--laque-c);opacity:.4;line-height:1;}
+.pbody{flex:1;}
+.pt2{font-size:.86rem;font-weight:500;color:var(--soie);margin-bottom:.35rem;}
+.pbody p{font-size:.77rem;margin:0 0 .5rem;}
+.poutil{display:inline-flex;align-items:center;gap:.4rem;font-size:.62rem;letter-spacing:.15em;padding:.28rem .7rem;border-radius:2px;background:rgba(184,145,74,.07);border:1px solid rgba(184,145,74,.18);color:var(--or-p);margin-top:.3rem;font-weight:400;}
+.poutil.j{background:rgba(61,114,89,.07);border-color:rgba(61,114,89,.2);color:var(--jade-p);}
+.ptag{font-size:.56rem;letter-spacing:.18em;padding:.24rem .7rem;border-radius:20px;white-space:nowrap;align-self:start;margin-top:.2rem;}
+
+/* Timeline */
+.tl{margin:2rem 0;}
+.tli{display:flex;gap:1.5rem;margin-bottom:.8rem;}
+.tlt{min-width:95px;text-align:right;font-size:.68rem;letter-spacing:.1em;color:var(--laque-p);padding-top:.25rem;}
+.tll{display:flex;flex-direction:column;align-items:center;padding-top:.25rem;}
+.tld{width:10px;height:10px;border-radius:50%;border:1px solid var(--or-m);background:var(--n);flex-shrink:0;}
+.tld.f{background:var(--or-m);}
+.tlc{width:1px;flex:1;background:rgba(184,145,74,.15);margin:2px 0;min-height:28px;}
+.tlco{flex:1;padding-bottom:1.2rem;}
+.tlp{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--jade-c);margin-bottom:.3rem;}
+.tln{font-family:'Shippori Mincho B1',serif;font-size:1.05rem;color:var(--soie);margin-bottom:.35rem;}
+.tlco p{font-size:.76rem;color:var(--t2);line-height:1.75;margin:0;}
+
+/* Citation */
+.cit{font-family:'Shippori Mincho B1',serif;font-size:1.25rem;font-weight:400;color:var(--or-p);text-align:center;padding:2rem;border-top:1px solid rgba(184,145,74,.09);border-bottom:1px solid rgba(184,145,74,.09);margin:2.2rem 0;line-height:1.75;}
+
+/* Div */
+.div{display:flex;align-items:center;gap:1rem;margin:2.5rem 0;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--t3);}
+.div::before,.div::after{content:'';flex:1;height:1px;background:rgba(184,145,74,.09);}
+
+/* Quiz */
+.quiz{background:var(--brun3);border:1px solid rgba(184,145,74,.1);border-radius:2px;padding:2rem;margin:1.5rem 0;}
+.qq{font-family:'Shippori Mincho B1',serif;font-size:1.1rem;color:var(--soie);margin-bottom:1.4rem;}
+.qo{display:block;width:100%;background:transparent;border:1px solid rgba(184,145,74,.14);color:var(--t2);font-family:'Mulish',sans-serif;font-size:.79rem;padding:.85rem 1.2rem;text-align:left;cursor:pointer;transition:all .3s;border-radius:2px;margin-bottom:.5rem;}
+.qo:last-of-type{margin-bottom:0;}
+.qo:hover{border-color:var(--or-m);color:var(--soie);background:rgba(184,145,74,.04);}
+.qo.ok{border-color:var(--jade-m);background:rgba(61,114,89,.08);color:var(--jade-p);}
+.qo.ko{border-color:#5a2020;background:rgba(90,32,32,.07);color:#b07070;}
+.qfb{margin-top:1rem;font-size:.79rem;line-height:1.75;padding:.9rem 1.1rem;border-radius:2px;display:none;}
+.qfb.show{display:block;}
+.qfb.ok{background:rgba(61,114,89,.08);color:var(--jade-p);border-left:2px solid var(--jade-m);}
+.qfb.ko{background:rgba(90,32,32,.07);color:#b07070;border-left:2px solid #5a2020;}
+
+/* Nav */
+.mnav{display:flex;justify-content:space-between;align-items:center;padding:2rem 4.5rem 4rem;border-top:1px solid rgba(184,145,74,.05);margin-top:2rem;}
+.btn{background:transparent;border:1px solid rgba(184,145,74,.22);color:var(--or-p);font-family:'Mulish',sans-serif;font-weight:300;font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;padding:.9rem 2rem;cursor:pointer;transition:all .3s;border-radius:1px;}
+.btn:hover{background:rgba(184,145,74,.06);border-color:var(--or-m);}
+.btn:disabled{opacity:.2;cursor:not-allowed;}
+.btn.p{background:rgba(184,145,74,.08);border-color:var(--or-m);color:var(--or-m);}
+.btn.p:hover{background:rgba(184,145,74,.14);}
+
+@media(max-width:768px){
+  .sb{display:none;}
+  .hero,.body{padding:2rem;}
+  .mnav{padding:1.5rem 2rem 3rem;}
+  .grid,.outils-grid{grid-template-columns:1fr;}
+  .proto-step{grid-template-columns:32px 1fr;}
+  .ptag{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <div class="sp-bg"></div>
+  <div class="sp-tex"></div>
+  <div class="vap-w">
+    <div class="vl"></div><div class="vl"></div><div class="vl"></div>
+    <div class="vl"></div><div class="vl"></div><div class="vl"></div><div class="vl"></div>
+  </div>
+  <div class="sp-k-bg">話</div>
+  <div class="sp-c">
+    <div class="sp-pre">Formation Rituel Maître · Édition Définitive · 150 €</div>
+    <h1 class="sp-title">HANASHI <span class="sp-k">話</span></h1>
+    <div class="sp-line"></div>
+    <div class="sp-sub">
+      Head Spa Kobido · Face Sculpting Coréen · K-Beauty<br>
+      10 Instruments Sacrés · Produits Makanai · Davines · Shu Uemura<br>
+      Menard · EviDenS · Aesop · Nuxe · Mediheal<br>
+      Rituel Complet · 2 Heures · 150 €
+    </div>
+    <button class="sp-enter" onclick="enter()">Entrer dans la formation</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <nav class="sb">
+    <div class="sb-head">
+      <div class="sb-logo">HANASHI <span class="sb-lk">話</span></div>
+      <div class="sb-tag">Formation Rituel Maître · Édition Définitive</div>
+    </div>
+    <div class="sb-prog">
+      <div class="pt"><div class="pf" id="pf"></div></div>
+      <div class="pl" id="pl">0 / 10 modules</div>
+    </div>
+    <div class="sb-nav">
+      <div class="sb-sec">Fondations</div>
+      <div class="ni active" onclick="go(0)" id="n0"><span class="sn">01</span>Hanashi — nom & vision<div class="chk" id="c0"></div></div>
+      <div class="ni" onclick="go(1)" id="n1"><span class="sn">02</span>Philosophie & origines<div class="chk" id="c1"></div></div>
+      <div class="ni" onclick="go(2)" id="n2"><span class="sn">03</span>Les 10 outils sacrés<div class="chk" id="c2"></div></div>
+      <div class="ni" onclick="go(3)" id="n3"><span class="sn">04</span>Produits & gamme<div class="chk" id="c3"></div></div>
+      <div class="sb-sec">Le Rituel</div>
+      <div class="ni" onclick="go(4)" id="n4"><span class="sn">05</span>Acte I · Head Spa & vapeur<div class="chk" id="c4"></div></div>
+      <div class="ni" onclick="go(5)" id="n5"><span class="sn">06</span>Acte II · Face Sculpting<div class="chk" id="c5"></div></div>
+      <div class="ni" onclick="go(6)" id="n6"><span class="sn">07</span>Acte II · Masques K-Beauty<div class="chk" id="c6"></div></div>
+      <div class="ni" onclick="go(7)" id="n7"><span class="sn">08</span>Acte III · Mains & bras<div class="chk" id="c7"></div></div>
+      <div class="ni" onclick="go(8)" id="n8"><span class="sn">09</span>Acte IV · Pieds<div class="chk" id="c8"></div></div>
+      <div class="sb-sec">Maîtrise</div>
+      <div class="ni" onclick="go(9)" id="n9"><span class="sn">10</span>Protocole 2h complet<div class="chk" id="c9"></div></div>
+    </div>
+    <div class="sb-bot">
+      <div class="sb-dur"><strong>2h00</strong>Rituel complet · 10 modules</div>
+      <div class="sb-price">Tarif : 150 € · Consommables ~21,50 €</div>
+    </div>
+  </nav>
+
+  <main class="main">
+
+    <!-- MODULE 1 — Vision -->
+    <section class="mod active" id="m0">
+      <div class="hero">
+        <div class="hk">話</div>
+        <div class="ht">Module 01 · Introduction</div>
+        <h1 class="hti">HANASHI <em>話</em><br>La conversation que les mains tiennent</h1>
+        <p class="hi">話 — L'histoire que l'on raconte. 花式 — La cérémonie de la fleur. Un nom à double fond, pour un rituel à double âme : japonaise et coréenne. Tarif : <strong style="color:var(--or-p)">150 €</strong> · 2 heures.</p>
+        <div class="bgs">
+          <span class="bg bl">Japonais</span><span class="bg bj">Coréen</span>
+          <span class="bg bo">2 heures · 150 €</span><span class="bg bl">Kobido</span>
+          <span class="bg bj">K-Beauty</span><span class="bg bo">10 instruments</span>
+        </div>
+      </div>
+      <div class="body">
+        <h2 class="st">La double lecture du nom</h2>
+        <div class="steps">
+          <div class="step">
+            <span class="snum">花式</span>
+            <div class="sbody">
+              <div class="st2">Hana Shi — La cérémonie de la fleur</div>
+              <p>花 Hana (l'épanouissement) + 式 Shi (le rituel codifié). Le soin comme une fleur qui s'ouvre pétale après pétale. La cliente entre en bouton, elle sort épanouie.</p>
+            </div>
+            <span class="stag tr">Cérémonie</span>
+          </div>
+          <div class="step">
+            <span class="snum">話</span>
+            <div class="sbody">
+              <div class="st2">Hanashi — La conversation silencieuse</div>
+              <p>話 désigne l'histoire, la parole qui relie. Dans Hanashi, c'est le <span class="hl">dialogue entre les mains et le corps</span>. Chaque pression est une phrase. Chaque pause est une virgule. Chaque séance, une histoire unique.</p>
+            </div>
+            <span class="stag tj">Dialogue</span>
+          </div>
+        </div>
+        <div class="cit">"Hanashi — parce que chaque soin est une histoire.<br>Et chaque histoire commence par poser les mains."</div>
+        <h2 class="st">Structure en 5 actes — 2 heures · 150 €</h2>
+        <div class="grid">
+          <div class="card"><div class="ci">🌊</div><div class="ct">Acte I — La vapeur</div><p>Head Spa japonais. Kobido crânien 20 min. Kenzan, Onsen, Bol Urushi, Peigne Tsuge. Makanai + Davines. 45 min.</p></div>
+          <div class="card"><div class="ci">🌸</div><div class="ct">Acte II — Le visage</div><p>Face sculpting coréen. Kobido facial 20 min. Gua sha Pierre Bian + Jade néphrite. Shu Uemura · Menard · EviDenS · Mediheal. 40 min.</p></div>
+          <div class="card"><div class="ci">🤲</div><div class="ct">Acte III — Mains & bras</div><p>Massage complet poignet → épaule. Points PC6, LU5, LI15. Hera coréen. Aesop Resurrection. 20 min.</p></div>
+          <div class="card"><div class="ci">🌿</div><div class="ct">Acte IV — Les pieds</div><p>Serviette chaude humide + HE menthe/eucalyptus. Bâton Hinoki. Réflexologie. Nuxe Rêve de Miel. 15 min.</p></div>
+          <div class="card"><div class="ci">話</div><div class="ct">Acte V — Le retour</div><p>Silence, ancrage, rinçage masque 37°C, Peigne Tsuge, Hydrolat Camélia, clôture mains seules. 5 min.</p></div>
+        </div>
+        <div class="info">
+          <div class="it">✦ Rentabilité</div>
+          <p>Coût consommables estimé : <span class="hl">~21,50 €</span> par soin. Marge brute : <span class="hl">~128,50 € (86%)</span>. Rentable dès la <span class="hl">11e cliente</span> (amortissement investissement sans bac). Tarif 150 € ancré dans le premium justifié — ni trop bas, ni inaccessible.</p>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" disabled>← Précédent</button>
+        <button class="btn p" onclick="nxt(0)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 2 — Philosophie -->
+    <section class="mod" id="m1">
+      <div class="hero">
+        <div class="hk">礼</div>
+        <div class="ht">Module 02 · Philosophie</div>
+        <h1 class="hti">Deux cultures,<br><em>une cérémonie</em></h1>
+        <p class="hi">Le Japon et la Corée partagent une conviction : soigner le corps est un acte sacré. Hanashi naît de cette conviction commune.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Le Japon — trois concepts fondateurs</h2>
+        <div class="steps">
+          <div class="step"><span class="snum">間</span><div class="sbody"><div class="st2">Ma — L'espace entre</div><p>La pause intentionnelle entre deux gestes. Pas un vide — un espace habité. Le Ma dit au corps que la sécurité est là. Chaque transition entre les actes de Hanashi est un Ma. Le turban chaud posé en silence est du Ma.</p></div><span class="stag tr">Japon</span></div>
+          <div class="step"><span class="snum">道</span><div class="sbody"><div class="st2">Do — La voie</div><p>古美道 — Kobido — "l'ancienne voie de la beauté". Une voie ne s'improvise pas. Elle se pratique, se répète, se raffine. Hanashi est un Do — chaque geste a été pensé, chaque outil a été choisi pour sa raison d'être.</p></div><span class="stag tr">Japon</span></div>
+          <div class="step"><span class="snum">気</span><div class="sbody"><div class="st2">Ki — L'énergie vitale</div><p>L'énergie que le massage met en mouvement. Les outils en pierre (Bian, jade) amplifient la transmission du Ki par leur densité minérale. Les points d'acupression (GV20, PC6, KD1) régulent le flux énergétique.</p></div><span class="stag tr">Japon</span></div>
+        </div>
+        <h2 class="st">La Corée — intelligence et couches</h2>
+        <div class="steps">
+          <div class="step"><span class="snum">눈치</span><div class="sbody"><div class="st2">Nunchi — Lire l'autre</div><p>S'adapter en temps réel au corps de la cliente. Les cuillères coréennes froides et le gua sha répondent à cette lecture instantanée — on ajuste la pression, la température, le rythme selon ce que les tissus disent.</p></div><span class="stag tj">Corée</span></div>
+          <div class="step"><span class="snum">겹</span><div class="sbody"><div class="st2">Gyeop — Les couches</div><p>Le layering coréen : chaque soin prépare le suivant. Toner → Sérum Menard → Sheet Mask Mediheal Centella → Crème EviDenS. Chaque couche potentialise la suivante. C'est la logique K-Beauty intégrée dans l'Acte II.</p></div><span class="stag tj">Corée</span></div>
+        </div>
+        <h2 class="st">Les 3 lois Hanashi</h2>
+        <div class="grid">
+          <div class="card"><div class="ci">∞</div><div class="ct">1. Continuité absolue</div><p>Les mains ne quittent jamais la peau. Chaque transition se fait avec au moins une main en contact. Aucune rupture de toucher de la 1ère à la dernière minute.</p></div>
+          <div class="card"><div class="ci">↑</div><div class="ct">2. Ascendance</div><p>Tous les gestes vont vers le haut ou vers les côtés. Jamais vers le bas. Contre la gravité, pour le drainage et la sustentation des tissus.</p></div>
+          <div class="card"><div class="ci">〰</div><div class="ct">3. Rythme vivant</div><p>Alternance lent/rapide comme une respiration. Le Kobido crânien et facial alternent ces rythmes pour agir sur le système nerveux autonome.</p></div>
+        </div>
+        <div class="info">
+          <div class="it">✦ Rituel d'ouverture — le premier geste</div>
+          <p>Avant de toucher : 3 respirations profondes. Frotter les paumes pour les réchauffer. Poser les deux mains de chaque côté de la tête — <span class="hl">5 secondes d'immobilité totale.</span> Ce geste dit à la cliente : tu es entre de bonnes mains. L'histoire commence.</p>
+        </div>
+        <div class="div">Auto-évaluation</div>
+        <div class="quiz">
+          <div class="qq">Le concept japonais du "Ma" dans Hanashi se traduit par :</div>
+          <div class="qo" onclick="ans(this,false,'q1','Non — enchaîner rapidement est l\'opposé du Ma. La rapidité brise la présence.')">Enchaîner les gestes rapidement pour maintenir le rythme</div>
+          <div class="qo" onclick="ans(this,true,'q1','Exact ✓ Le Ma est l\'espace habité entre les gestes — la pause qui permet au corps de répondre et au système nerveux de s\'installer dans la sécurité.')">Les pauses intentionnelles entre les gestes, laisser le corps répondre</div>
+          <div class="qo" onclick="ans(this,false,'q1','Non — l\'organisation est importante mais ce n\'est pas ce que désigne le Ma.')">L'organisation précise du matériel avant la séance</div>
+          <div class="qfb" id="q1"></div>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(1)">← Précédent</button>
+        <button class="btn p" onclick="nxt(1)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 3 — OUTILS SACRÉS -->
+    <section class="mod" id="m2">
+      <div class="hero">
+        <div class="hk">器</div>
+        <div class="ht">Module 03 · Les 10 instruments sacrés</div>
+        <h1 class="hti">Les outils<br><em>du rituel Hanashi</em></h1>
+        <p class="hi">Chaque instrument porte une histoire millénaire. Avant d'apprendre à s'en servir, apprendre à le connaître — sa matière, son origine, ce qu'il transmet.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Outils du crâne — Acte I</h2>
+        <div class="outils-grid">
+          <div class="outil">
+            <div class="outil-k">剣山</div>
+            <div class="outil-o">Japon · Tradition</div>
+            <div class="outil-n">Brosse Kenzan UKA</div>
+            <div class="outil-m">Silicone médical · bijo.paris · 25–35 €</div>
+            <p>La Kenzan (剣山 — "montagne d'épées") est nommée d'après les pics de l'ikebana japonais. Ses pointes fines travaillent chaque mm² du cuir chevelu avec une précision que les doigts seuls ne peuvent atteindre. Active la microcirculation, décolle les adhérences superficielles, prépare l'absorption de l'huile Makanai Tsubaki.</p>
+            <div class="outil-u"><strong>Acte I :</strong> à sec avant l'huile, mouvements circulaires 3 min. Jamais sur cuir chevelu irrité.</div>
+          </div>
+          <div class="outil">
+            <div class="outil-k">温泉</div>
+            <div class="outil-o">Japon · Onsen</div>
+            <div class="outil-n">Pierres Onsen basalte</div>
+            <div class="outil-m">Basalte volcanique · sens-original.com · 30–60 €</div>
+            <p>Inspirées des onsen (温泉 — sources thermales japonaises). Chauffées à 45–50°C, enveloppées dans une gaze fine, posées sur les épaules pendant le masque capillaire Davines Oi. La chaleur pénètre profondément dans les trapèzes, libérant les tensions cervicales.</p>
+            <div class="outil-u"><strong>Acte I :</strong> pendant le masque capillaire 8 min. Repositionner si refroidissement.</div>
+          </div>
+          <div class="outil">
+            <div class="outil-k">漆器</div>
+            <div class="outil-o">Japon · Laque Urushi</div>
+            <div class="outil-n">Bol laqu&eacute; Urushi</div>
+            <div class="outil-m">Bois laqu&eacute; urushi · etsy/japonais · 30–80 €</div>
+            <p>La laque japonaise urushi (漆) est un art vieux de 9000 ans. Mélanger le masque Davines Oi ou le masque EviDenS dans ce bol est un geste cérémonieux visible par la cliente — il dit que rien n'est ordinaire ici. Sa surface lisse n'altère aucun actif.</p>
+            <div class="outil-u"><strong>Acte I–II :</strong> préparation des masques en début de soin. Présenter le bol à la cliente avant mélange.</div>
+          </div>
+          <div class="outil">
+            <div class="outil-k">黄楊</div>
+            <div class="outil-o">Japon · Ère Edo</div>
+            <div class="outil-n">Peigne Tsuge-Gushi</div>
+            <div class="outil-m">Buis japonais dense · anything-from-japan.com · 25–80 €</div>
+            <p>Le tsuge-gushi (黄楊櫛) est le peigne japonais traditionnel taillé dans le buis le plus dense. Aucune électricité statique, glisse sans casser. Utilisé par les Geishas depuis l'ère Edo. Infuse l'huile de camélia naturellement à chaque passage.</p>
+            <div class="outil-u"><strong>Acte V :</strong> 7 passes de la nuque vers le front après rinçage final. Geste de finition méditatif.</div>
+          </div>
+        </div>
+
+        <h2 class="st">Outils du visage — Acte II</h2>
+        <div class="outils-grid">
+          <div class="outil">
+            <div class="outil-k">砭石</div>
+            <div class="outil-o">Chine antique · K-Beauty</div>
+            <div class="outil-n">Pierre Bian</div>
+            <div class="outil-m">Sibnite naturelle · biosme-paris.fr · 40–90 €</div>
+            <p>La Bian stone (砭石 — "pierre médicale") est la plus ancienne pierre thérapeutique connue — 3000 ans avant notre ère, avant l'acupuncture. Se réchauffe à la température du corps en quelques secondes. Plus douce que le jade, elle crée une continuité avec la peau.</p>
+            <div class="outil-u"><strong>Acte II :</strong> gua sha sculpting après drainage lymphatique. Toujours avec sérum Menard Embellir.</div>
+          </div>
+          <div class="outil">
+            <div class="outil-k">翡翠</div>
+            <div class="outil-o">Corée · Jade néphrite</div>
+            <div class="outil-n">Jade Néphrite véritable</div>
+            <div class="outil-m">Jade néphrite · jaderoller.com · 30–70 €</div>
+            <p>En Corée, le jade (翡翠) est symbole de pureté depuis l'ère des Trois Royaumes. Naturellement froid, reste frais à température ambiante. Après la Pierre Bian (chaude), le jade froid crée le contraste thermique coréen qui tonifie et illumine.</p>
+            <div class="outil-u"><strong>Acte II :</strong> finition drainante froide 5 min après la Bian. Conserver au frais avant le soin.</div>
+          </div>
+          <div class="outil">
+            <div class="outil-k">숟가락</div>
+            <div class="outil-o">Corée · Tradition royale Joseon</div>
+            <div class="outil-n">Cuillères Baegun</div>
+            <div class="outil-m">Inox chirurgical · yesstyle.com · 10–40 €</div>
+            <p>Les cuillères en argent étaient utilisées dans les palais de la cour coréenne Joseon. Conservées au réfrigérateur, elles sont posées sous les yeux, sur les tempes, et le long de la mâchoire pour décongestionnement instantané. Alternance chaud-froid, principe actif coréen ancestral.</p>
+            <div class="outil-u"><strong>Acte II :</strong> réfrigérateur 30 min avant. Poches yeux (3×), tempes (10 sec), mâchoire (5×).</div>
+          </div>
+          <div class="outil">
+            <div class="outil-k">金製</div>
+            <div class="outil-o">Japon-Corée · Dual use</div>
+            <div class="outil-n">Peigne Gua Sha Love Chrome</div>
+            <div class="outil-m">Métal doré antistatique · bijo.paris · 45–60 €</div>
+            <p>Né au Japon, adopté en Corée. Double fonction : lame peignes pour le cuir chevelu, lame gua sha incurvée pour drainer tempes et mâchoire. Revêtement JP CHROME TECH réduit 70% des frictions. Fini à la main au Japon. Pont physique Acte I → Acte II.</p>
+            <div class="outil-u"><strong>Transition I→II :</strong> lame gua sha sur tempes et mâchoire, 5 passes latérales chaque côté.</div>
+          </div>
+        </div>
+
+        <h2 class="st">Outils des mains & pieds — Actes III & IV</h2>
+        <div class="outils-grid">
+          <div class="outil">
+            <div class="outil-k">헤라</div>
+            <div class="outil-o">Corée · Beauté rituelle</div>
+            <div class="outil-n">Hera — Spatule coréenne</div>
+            <div class="outil-m">Bambou / corne naturelle · yesstyle.com · 5–20 €</div>
+            <p>Le Hera (헤라) est la spatule d'application coréenne traditionnelle. Utilisé par les femmes coréennes depuis des siècles pour appliquer les crèmes avec précision, hygiène et intention. Dans Hanashi, applique la crème Aesop Resurrection (mains) et la crème Nuxe Rêve de Miel (pieds).</p>
+            <div class="outil-u"><strong>Actes III–IV :</strong> application crème mains Aesop + gommage pieds. Geste ritualisé, lent, visible.</div>
+          </div>
+          <div class="outil">
+            <div class="outil-k">檜</div>
+            <div class="outil-o">Japon · Bois sacré</div>
+            <div class="outil-n">Bâton Hinoki</div>
+            <div class="outil-m">Cyprès japonais sacré · bijo.paris · 15–35 €</div>
+            <p>Le hinoki (檜) est le bois sacré du Japon — utilisé dans les temples Shinto, les bains traditionnels ofuro, les sanctuaires d'Ise. Son parfum (α-pinène, limonène) est naturellement antibactérien, apaisant, déclenche une réponse parasympathique mesurable. Double action : pression précise + parfum cérémonieux.</p>
+            <div class="outil-u"><strong>Acte IV :</strong> réflexologie plantaire. Réchauffer dans les mains avant. Présenter son parfum à la cliente.</div>
+          </div>
+        </div>
+
+        <div class="info">
+          <div class="it">✦ Le protocole de présentation</div>
+          <p>En début de séance, présenter les outils à la cliente : les nommer, indiquer leur origine, expliquer en une phrase leur rôle. <span class="hl">Nommer l'outil, c'est déjà commencer le rituel.</span> Ce protocole de présentation prend 2 minutes et transforme l'expérience — la cliente comprend qu'elle vit quelque chose de rare.</p>
+        </div>
+
+        <div class="div">Auto-évaluation</div>
+        <div class="quiz">
+          <div class="qq">Pourquoi utilise-t-on la Pierre Bian PUIS le jade néphrite (et non l'inverse) ?</div>
+          <div class="qo" onclick="ans(this,false,'q2','Non — l\'ordre est lié à leur température et leur intention thérapeutique.')">Par ordre alphabétique des noms</div>
+          <div class="qo" onclick="ans(this,true,'q2','Exact ✓ La Pierre Bian se réchauffe à la température du corps (chaleur active — sculpte et draine profondément). Le jade néphrite reste froid (froid tonifiant — referme, tonifie, illumine). C\'est le principe coréen du contraste thermique intentionnel.')">La Bian se réchauffe (chaleur active), le jade reste froid (froid tonifiant) — contraste thermique intentionnel</div>
+          <div class="qo" onclick="ans(this,false,'q2','Non — le coût n\'a aucun rapport avec la séquence thérapeutique.')">Le jade étant plus coûteux, on le garde pour la fin</div>
+          <div class="qfb" id="q2"></div>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(2)">← Précédent</button>
+        <button class="btn p" onclick="nxt(2)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 4 — PRODUITS -->
+    <section class="mod" id="m3">
+      <div class="hero">
+        <div class="hk">香</div>
+        <div class="ht">Module 04 · Produits & gamme</div>
+        <h1 class="hti">Les produits<br><em>du rituel Hanashi</em></h1>
+        <p class="hi">Makanai · Davines · Kérastase · Shu Uemura · Menard · EviDenS · Mediheal · Hada Labo · Aesop · Nuxe — sélectionnés avec la même exigence que les outils.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Acte I — Tête & crâne</h2>
+
+        <div class="produit-card">
+          <div class="produit-nom">Huile Tsubaki</div>
+          <div class="produit-marque">Makanai · bijo.paris · 38–45 €</div>
+          <p>Huile de camélia pure et huile d'abricot. Parfum floral boisé délicat. Appliquée tiède section par section sur le cuir chevelu avant la vapeur. Prépare l'absorption et glisse sous les doigts pour le Kobido crânien.</p>
+          <div class="produit-detail"><strong>Usage :</strong> 5–8 ml tiédis entre les paumes · Pression 150–200g · Section par section</div>
+        </div>
+
+        <div class="produit-card jade">
+          <div class="produit-nom">Shampoing Phytojoba</div>
+          <div class="produit-marque">Phyto · pharmacies pro · 18–24 €</div>
+          <p>Sans sulfates agressifs, enrichi en jojoba. pH équilibré. Double application rituelle — première pour dégraisser, seconde pour nourrir. Mousse crémeuse idéale pour le pétrissage digital du cuir chevelu.</p>
+          <div class="produit-detail"><strong>Usage :</strong> 1er shampoing à sec, pétrissage 3 min · 2ème focus ligne d'implantation</div>
+        </div>
+
+        <div class="produit-card">
+          <div class="produit-nom">Masque Oi (roucou ambré, boisé)</div>
+          <div class="produit-marque">Davines · distribution pro · 25–40 €</div>
+          <p>Masque nutritif à l'huile de roucou — texture fondante, parfum ambré boisé luxueux. Posé après double shampoing dans le bol Urushi lacqué. Enveloppé dans une serviette chaude 8 min avec les pierres Onsen sur les épaules.</p>
+          <div class="produit-detail"><strong>Usage :</strong> longueurs et pointes · Serviette chaude · Pierres Onsen simultanées</div>
+        </div>
+
+        <div class="produit-card jade">
+          <div class="produit-nom">Sérum Initialiste</div>
+          <div class="produit-marque">Kérastase · salons pro · 38–48 €</div>
+          <p>Sérum concentré cuir chevelu — acides aminés, protéines de soie. Appliqué en 5–6 gouttes en pressions légères après rinçage final. Protège et fortifie sans alourdir. Le geste de finition cuir chevelu avant le peigne Tsuge.</p>
+          <div class="produit-detail"><strong>Usage :</strong> 5–6 gouttes après rinçage · Pressions légères · Puis peigne Tsuge 7 passes</div>
+        </div>
+
+        <div class="produit-card">
+          <div class="produit-nom">Hydrolat Camélia</div>
+          <div class="produit-marque">Makanai · bijo.paris · 22–30 €</div>
+          <p>Eau florale de camélia pure. Vaporisée sur le cuir chevelu après sérum pour la finition olfactive et le voile d'hydratation finale. Le parfum délicat du camélia ferme le voyage sensoriel de l'Acte I.</p>
+          <div class="produit-detail"><strong>Usage :</strong> Acte V — vaporisation sur cuir chevelu après peigne Tsuge</div>
+        </div>
+
+        <h2 class="st">Acte II — Visage</h2>
+
+        <div class="produit-card">
+          <div class="produit-nom">Osmosis Cleansing Oil (rose japonaise)</div>
+          <div class="produit-marque">Shu Uemura · notino.fr · 65–85 €</div>
+          <p>L'huile démaquillante de référence japonaise — rose japonaise, camélia, carotène. Premier cleansing sur visage sec. Cercles ascendants 60 sec, émulsionner, rincer 37°C. Dissout tout sans agresser — même sur peau sans maquillage, le séum résiduel est éliminé.</p>
+          <div class="produit-detail"><strong>1er cleansing :</strong> visage sec · 60 sec cercles ascendants · Émulsionner · Rincer 37°C</div>
+        </div>
+
+        <div class="produit-card jade">
+          <div class="produit-nom">Gokujyun Lotion (acide hyaluronique triple)</div>
+          <div class="produit-marque">Hada Labo · yesstyle.com · 12–18 €</div>
+          <p>Tonique au triple acide hyaluronique coréen. Appliqué immédiatement après le double nettoyage, sur peau encore tiède. Tamponnement doux ascendant. Équilibre le pH, hydrate en profondeur les premières couches — prépare l'absorption du sérum Menard.</p>
+          <div class="produit-detail"><strong>1ère couche K-Beauty :</strong> sur peau tiède · Tamponnement ascendant · Ne pas rincer</div>
+        </div>
+
+        <div class="produit-card">
+          <div class="produit-nom">Embellir Sérum (sakura, fleur de soie)</div>
+          <div class="produit-marque">Menard · menard.fr · 60–90 €</div>
+          <p>Sérum anti-âge japonais haut de gamme — extrait de sakura, soie biotechnologique. Quelques gouttes réchauffées entre les paumes, technique "palming". Pénètre dans les couches plus profondes que la crème. Appliqué après le tonique Hada Labo, avant le sheet mask.</p>
+          <div class="produit-detail"><strong>2ème couche :</strong> palming sur tout le visage · Laisser 1 min · Puis sheet mask</div>
+        </div>
+
+        <div class="produit-card jade">
+          <div class="produit-nom">Sheet Mask Centella (ultra-apaisant)</div>
+          <div class="produit-marque">Mediheal · yesstyle.com · 2,50–4 €/u</div>
+          <p>Masque tissu imbibé d'essence centella asiatica — principe actif apaisant et réparateur coréen. Posé sur peau humide, du nez vers les bords. Pose 15–18 min pendant le massage des mains. Libère les actifs de manière continue grâce au contact direct.</p>
+          <div class="produit-detail"><strong>3ème couche :</strong> pose 15–18 min · Pendant ce temps : Acte III mains simultané</div>
+        </div>
+
+        <div class="produit-card">
+          <div class="produit-nom">Crème Renaissance (pivoine Kyoto, santal blanc)</div>
+          <div class="produit-marque">EviDenS de Beauté · evidensdebeaute.com · 80–120 €</div>
+          <p>Crème hydratante finale luxueuse — pivoine de Kyoto, santal blanc, huiles précieuses. Appliquée en effleurage ascendant après retrait du sheet mask. Le résidu d'essence est massé par tamponnement avant l'application. Finition lumineuse et nourrissante.</p>
+          <div class="produit-detail"><strong>Finition Acte II :</strong> après retrait masque · Effleurage ascendant · Ne jamais vers le bas</div>
+        </div>
+
+        <h2 class="st">Acte III — Mains & bras</h2>
+
+        <div class="produit-card">
+          <div class="produit-nom">Gommage sucre + argan + lavande (maison)</div>
+          <div class="produit-marque">Préparation maison · ~0,25 €/soin</div>
+          <p>Gommage artisanal sucre de canne + huile d'argan + 2 gouttes HE lavande vraie. Appliqué avec le Hera coréen sur la paume, le dos de la main, les doigts et les cuticules. Cercles 60 sec par main. Retirer avec serviette humide chaude.</p>
+          <div class="produit-detail"><strong>Acte III :</strong> avec le Hera · Pression 100–150g · Serviette chaude pour retirer</div>
+        </div>
+
+        <div class="produit-card jade">
+          <div class="produit-nom">Crème Resurrection (mandarine, romarin, cèdre)</div>
+          <div class="produit-marque">Aesop · aesop.com · 40–55 €</div>
+          <p>Crème mains signature Aesop — mandarine, romarin, cèdre du Liban. Texture riche non grasse, absorption élégante. Appliquée avec le Hera coréen (geste ritualisé visible) puis enfermée sous gants plastique + serviette chaude 5 min de pose pendant le début de l'Acte IV.</p>
+          <div class="produit-detail"><strong>Masque mains :</strong> Hera + gants plastique + serviette chaude · 5 min simultané Acte IV</div>
+        </div>
+
+        <h2 class="st">Acte IV — Pieds (sans bain)</h2>
+
+        <div class="produit-card">
+          <div class="produit-nom">HE Menthe + Eucalyptus sur serviette chaude</div>
+          <div class="produit-marque">Huiles essentielles pures · ~0,30 €/soin</div>
+          <p>Serviette éponge chaude humide (55–60°C) imbibée de 3 gouttes HE menthe poivrée + 2 gouttes HE eucalyptus. Enveloppement 2 min par pied. Remplace efficacement le bain — ouvre les pores, détend les muscles, parfum cérémonieux. Même efficacité sans logistique de bac.</p>
+          <div class="produit-detail"><strong>Substitution bain :</strong> serviette 55–60°C · 2 min/pied · Puis bâton Hinoki directement</div>
+        </div>
+
+        <div class="produit-card jade">
+          <div class="produit-nom">Rêve de Miel Crème Pieds (miel, beurre karité)</div>
+          <div class="produit-marque">Nuxe · 14–18 €</div>
+          <p>Crème pieds nourrissante — miel, beurre de karité, céramides. Appliquée généreusement avec le Hera coréen après la réflexologie bâton hinoki. Talons et orteils. Chaussettes chaudes ou serviette pour faire pénétrer pendant l'Acte V (retour).</p>
+          <div class="produit-detail"><strong>Finition Acte IV :</strong> Hera + chaussettes chaudes · Pénètre pendant Acte V</div>
+        </div>
+
+        <div class="info j">
+          <div class="it">📋 Coût consommables estimé par soin</div>
+          <p>Makanai Tsubaki 38€/50ml (~0,80€) · Phytojoba 22€/200ml (~0,55€) · Davines Oi 35€/200ml (~0,88€) · Kérastase Initialiste 44€/60ml (~1,47€) · Makanai Hydrolat 26€/120ml (~0,65€) · Shu Uemura 75€/150ml (~1,25€) · Hada Labo 15€/170ml (~0,22€) · Menard Embellir 75€/30ml (~3,75€) · Mediheal mask 3€/u · EviDenS 100€/50ml (~3,00€) · Gommage maison (~0,25€) · Aesop Resurrection 47€/75ml (~1,57€) · HE menthe+eucalyptus (~0,30€) · Nuxe Rêve Miel 16€/100ml (~0,80€) = <span class="hlj">~21,50 € / soin</span>. Marge : ~128,50 € (86%).</p>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(3)">← Précédent</button>
+        <button class="btn p" onclick="nxt(3)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 5 — HEAD SPA -->
+    <section class="mod" id="m4">
+      <div class="hero">
+        <div class="hk">湯</div>
+        <div class="ht">Module 05 · Acte I</div>
+        <h1 class="hti">Head Spa<br><em>& vapeur — 45 min</em></h1>
+        <p class="hi">L'ouverture. Kenzan, Onsen, Kobido crânien, Bol Urushi, double shampoing Phytojoba, masque Davines Oi, Peigne Tsuge, Hydrolat Camélia Makanai.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Protocole minute par minute</h2>
+        <div class="steps">
+          <div class="proto-step">
+            <div class="pn">1</div>
+            <div class="pbody">
+              <div class="pt2">Rituel d'ouverture (1 min)</div>
+              <p>Cliente allongée. 3 respirations praticienne. Mains réchauffées. Paume gauche front, droite occiput — 10 secondes d'immobilité totale. Premier contact sacré.</p>
+            </div>
+            <span class="stag tr ptag">Ouverture</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">2</div>
+            <div class="pbody">
+              <div class="pt2">Brossage Kenzan à sec (3 min)</div>
+              <p>Brosse Kenzan UKA sur cuir chevelu sec. Mouvements circulaires lents de la nuque vers le front. <span class="hl">Pression : 100–150g.</span> Active la surface, décolle le sébum, prépare l'absorption de l'huile Makanai. Terminer par 3 passes effleurage toute longueur.</p>
+              <span class="poutil">剣山 Kenzan UKA</span>
+            </div>
+            <span class="stag tr ptag">Kenzan</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">3</div>
+            <div class="pbody">
+              <div class="pt2">Application Huile Tsubaki Makanai + vapeur (8 min)</div>
+              <p>Huile Makanai tiède entre les paumes. Sections en 4 parties. Effleurage lent pression 150–200g. Puis vapeur 40–42°C à 20–25 cm, 5–6 min en circulaire. Pendant la vapeur : présenter les pierres Onsen chauffées à 45–50°C, les poser sur les épaules dans leur gaze.</p>
+              <span class="poutil">温泉 Pierres Onsen</span>
+            </div>
+            <span class="stag tr ptag">Vapeur</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">4</div>
+            <div class="pbody">
+              <div class="pt2">Massage crânien Kobido (20 min)</div>
+              <p>Séquence : nuque → occiput → tempes → pariétal → frontal → retour. Chaque zone : effleurage (150–200g) → pétrissage digital (300–400g) → friction circulaire (200–300g). Points : GV20 Baihui (400–500g, 5sec×3), VB20 Fengchi, GV16 Fengfu, Yintang. Kobido alterné rapide 2 min pariétal.</p>
+            </div>
+            <span class="stag tr ptag">Kobido</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">5</div>
+            <div class="pbody">
+              <div class="pt2">Préparation masque Davines dans le Bol Urushi (1 min)</div>
+              <p>Sortir le bol laqué urushi. Mélanger le masque Oi Davines. Geste cérémonieux visible par la cliente. Expliquer en une phrase : "Huile de roucou de la forêt amazonienne — elle va nourrir les longueurs pendant que nous travaillons."</p>
+              <span class="poutil">漆器 Bol Urushi</span>
+            </div>
+            <span class="stag to ptag">Cérémonie</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">6</div>
+            <div class="pbody">
+              <div class="pt2">Double shampoing Phytojoba (7 min)</div>
+              <p><span class="hl">1er Phytojoba :</span> émulsionner entre les paumes, mousse à sec sur le crâne. Pétrissage digital 3 min. Rincer 37°C lentement. <span class="hl">2ème Phytojoba :</span> dose réduite, focus ligne d'implantation + tempes, 2 min massage plus doux. Rincer 5 secondes à 35°C pour refermer les cuticules.</p>
+            </div>
+            <span class="stag to ptag">Shampoing</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">7</div>
+            <div class="pbody">
+              <div class="pt2">Masque Davines Oi + pierres Onsen + nuque (8 min)</div>
+              <p>Appliquer le masque Davines Oi sur longueurs (préparé dans le bol Urushi). Serviette chaude sur le crâne. Replacer les pierres Onsen sur les épaules si encore chaudes. Massage nuque et trapèzes 3 min. Pression occipitale statique 1 min. Silence 4 min.</p>
+              <span class="poutil">温泉 Pierres Onsen</span>
+            </div>
+            <span class="stag tj ptag">Masque</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">8</div>
+            <div class="pbody">
+              <div class="pt2">Rinçage + Sérum Kérastase + Peigne Tsuge + Hydrolat Makanai (2 min)</div>
+              <p>Rinçage soigneux. Essorage manuel doux. Sérum Initialiste Kérastase 5–6 gouttes en pressions légères sur le cuir chevelu. Passage du Peigne Tsuge-Gushi 7 fois de la nuque vers le front — geste méditatif. Hydrolat Camélia Makanai vaporisé. Serviette sèche. Transition Acte II.</p>
+              <span class="poutil">黄楊 Peigne Tsuge</span>
+            </div>
+            <span class="stag to ptag">Finition</span>
+          </div>
+        </div>
+
+        <h2 class="st">Tableau Kobido crânien — pressions et durées</h2>
+        <table class="tbl">
+          <thead><tr><th>Technique</th><th>Zone</th><th>Pression</th><th>Durée</th><th>Outil/point</th></tr></thead>
+          <tbody>
+            <tr><td class="tn">Brossage Kenzan</td><td>Tout le cuir chevelu</td><td>100–150g</td><td>3 min</td><td><span class="pill">剣山 Kenzan</span></td></tr>
+            <tr><td class="tn">Effleurage bimanuel</td><td>Tout le crâne</td><td>150–200g</td><td>3 min</td><td>Mains</td></tr>
+            <tr><td class="tn">Pétrissage digital profond</td><td>Pariétal + temporal</td><td>300–400g</td><td>5 min</td><td>Mains · Galéa</td></tr>
+            <tr><td class="tn">Friction circulaire</td><td>Occiput + frontal</td><td>200–300g</td><td>4 min</td><td>Mains · Adhérences</td></tr>
+            <tr><td class="tn">Pression statique</td><td>GV20, VB20, Yintang</td><td>400–500g</td><td>3 min</td><td>Points énergétiques</td></tr>
+            <tr><td class="tn">Kobido alterné rapide</td><td>Pariétal</td><td>100–150g</td><td>2 min</td><td>Vague Kobido · SNA</td></tr>
+            <tr><td class="tn">Percussion pluie</td><td>Tout le crâne</td><td>50–80g</td><td>2 min</td><td>Stimulation folliculaire</td></tr>
+            <tr><td class="tn">Peigne Tsuge + Hydrolat</td><td>Longueurs → front</td><td>Effleurage</td><td>1 min</td><td><span class="pill">黄楊 Tsuge</span></td></tr>
+          </tbody>
+        </table>
+
+        <div class="div">Auto-évaluation</div>
+        <div class="quiz">
+          <div class="qq">La brosse Kenzan s'utilise dans Hanashi :</div>
+          <div class="qo" onclick="ans(this,false,'q3','Non — la Kenzan s\'utilise sur cuir chevelu sec, avant l\'huile. L\'eau nuirait à son efficacité.')">Pendant le shampoing, sous l'eau</div>
+          <div class="qo" onclick="ans(this,true,'q3','Exact ✓ La Kenzan s\'utilise à sec, avant l\'huile Makanai, pour activer la surface et préparer l\'absorption. C\'est le tout premier geste du soin, après le rituel d\'ouverture.')">À sec, avant l'huile Makanai, en ouverture de l'Acte I</div>
+          <div class="qo" onclick="ans(this,false,'q3','Non — le Peigne Tsuge-Gushi est l\'outil de finition après rinçage. La Kenzan intervient en tout début de soin.')">En finition, après le rinçage</div>
+          <div class="qfb" id="q3"></div>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(4)">← Précédent</button>
+        <button class="btn p" onclick="nxt(4)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 6 — FACE SCULPTING -->
+    <section class="mod" id="m5">
+      <div class="hero">
+        <div class="hk">彫</div>
+        <div class="ht">Module 06 · Acte II (1/2)</div>
+        <h1 class="hti">Face Sculpting<br><em>& Kobido facial — 40 min</em></h1>
+        <p class="hi">Cuillères Baegun · Kobido facial 20 min · Drainage · Pierre Bian gua sha · Jade néphrite. Shu Uemura · Hada Labo · Menard.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Séquence complète Acte II — partie 1</h2>
+        <div class="steps">
+          <div class="proto-step">
+            <div class="pn">1</div>
+            <div class="pbody">
+              <div class="pt2">Transition — Peigne Gua Sha capillaire (2 min)</div>
+              <p>En sortie de l'Acte I, lame gua sha du peigne Love Chrome sur tempes et mâchoire — 5 passes latérales chaque côté. Crée la transition fluide entre travail crânien et facial. Déposer le peigne. Présenter les cuillères froides.</p>
+              <span class="poutil">金製 Peigne Gua Sha</span>
+            </div>
+            <span class="stag to ptag">Transition</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">2</div>
+            <div class="pbody">
+              <div class="pt2">Double nettoyage coréen — Shu Uemura (5 min)</div>
+              <p><span class="hl">1er cleansing Shu Uemura Osmosis :</span> huile sur visage sec, cercles ascendants 60 sec, émulsionner avec quelques gouttes d'eau (texture blanchit), rincer 37°C. <span class="hl">2ème cleansing :</span> gel nettoyant doux, cercles ascendants, focus contour nez et menton, rincer. Hada Labo Gokujyun immédiatement sur peau tiède.</p>
+            </div>
+            <span class="stag tj ptag">K-Beauty</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">3</div>
+            <div class="pbody">
+              <div class="pt2">Cuillères Baegun froides — décongestionnement (3 min)</div>
+              <p>Sortir les cuillères du réfrigérateur. Les présenter à la cliente (elle sent le froid). Poches sous les yeux : 3 passes de l'intérieur vers l'extérieur. Tempes : pression statique 10 sec chaque côté. Mâchoire : glissement de l'angle mandibulaire vers l'oreille 5×. Prépare les tissus avant le Kobido.</p>
+              <span class="poutil j">숟가락 Cuillères Baegun</span>
+            </div>
+            <span class="stag tj ptag">Corée</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">4</div>
+            <div class="pbody">
+              <div class="pt2">Kobido facial — Le Grand Balayage (20 min)</div>
+              <p>Effleurage ascendant 7× (80–120g) → Pétrissage platysma 3× (150–200g) → Pincement-roulement zygomatiques 9× (100–150g) → Percussion digitale front+joues 30sec×2 (40–60g) → Pression masséter 5sec×3 (300–400g) → Glissement temporal→occiput 7× (200g) → <span class="hl">Le Grand Balayage</span> : menton→joues→tempes→front, 3 pivots de poignet sans décoller, pression décroissante → Effleurage fermeture 3× (60g).</p>
+            </div>
+            <span class="stag tr ptag">Kobido</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">5</div>
+            <div class="pbody">
+              <div class="pt2">Drainage lymphatique (3 min)</div>
+              <p>Ouvrir les voies avant le gua sha : terminus (sous clavicule, 5sec×3) → cervicaux latéraux (effleurage descendant 5×) → sous-mandibulaires (pressions 3sec×5) → pré-auriculaires. Obligatoire avant la Pierre Bian pour maximiser l'effet drainant.</p>
+            </div>
+            <span class="stag tj ptag">Drainage</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">6</div>
+            <div class="pbody">
+              <div class="pt2">Gua Sha Pierre Bian + Sérum Menard Embellir (12 min)</div>
+              <p>Sérum Menard Embellir sur peau. Présenter la pierre froide à la cliente. Séquence fixe : Cou (5×) → Mâchoire (7×) → Joues (7×) → Pommettes (7×) → Front (5×) → Yeux (5×) → Nez (3×). <span class="hl">Toujours ascendant ou latéral.</span> Pression 100–200g selon zone. La pierre se réchauffe progressivement à la température du corps.</p>
+              <span class="poutil">砭石 Pierre Bian</span>
+            </div>
+            <span class="stag tr ptag">Gua Sha</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">7</div>
+            <div class="pbody">
+              <div class="pt2">Jade néphrite — finition drainante froide (5 min)</div>
+              <p>Après la Pierre Bian (chaude), sortir le jade néphrite (froid). Contraste thermique intentionnel. 3 passes cou→tempes. Drainage sous les yeux. Pose statique sur les tempes 20 secondes. <span class="hl">Ce contraste chaud-froid est le secret coréen du teint lumineux.</span></p>
+              <span class="poutil j">翡翠 Jade Néphrite</span>
+            </div>
+            <span class="stag tj ptag">Contraste</span>
+          </div>
+        </div>
+
+        <div class="info r">
+          <div class="it">⚠️ Contre-indications absolues Face Sculpting</div>
+          <p>Ne jamais pratiquer sur : acné active (pustules ouvertes), rosacée en crise, eczéma/psoriasis en poussée, herpès actif, injections récentes (&lt;15 jours), plaies/cicatrices récentes, troubles de coagulation. Le gua sha est contre-indiqué sur peau vasculaire sensible même hors crise.</p>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(5)">← Précédent</button>
+        <button class="btn p" onclick="nxt(5)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 7 — MASQUES K-BEAUTY -->
+    <section class="mod" id="m6">
+      <div class="hero">
+        <div class="hk">面</div>
+        <div class="ht">Module 07 · Acte II (2/2)</div>
+        <h1 class="hti">Masques K-Beauty<br><em>& layering Hada Labo · Menard · EviDenS</em></h1>
+        <p class="hi">Couches successives, patience, slow beauty coréenne. Le sheet mask Mediheal posé — la praticienne commence immédiatement l'Acte III.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Le layering K-Beauty intégré au rituel</h2>
+        <div class="steps">
+          <div class="step"><span class="snum">1</span><div class="sbody"><div class="st2">Hada Labo Gokujyun — Tonique (1 min)</div><p>Immédiatement après le nettoyage, peau encore tiède. Tamponnement doux ascendant. Triple acide hyaluronique — équilibre le pH, hydrate les premières couches. Ne pas frotter. Ne pas rincer. Laisser pénétrer 30 sec.</p></div><span class="stag tj">1ère couche</span></div>
+          <div class="step"><span class="snum">2</span><div class="sbody"><div class="st2">Menard Embellir — Sérum sakura (1 min)</div><p>Quelques gouttes réchauffées entre les paumes. Technique "palming" : presser doucement sur tout le visage. Extrait de sakura + soie biotechnologique. Pénètre dans les couches profondes. Laisser 1 min avant le masque.</p></div><span class="stag tj">2ème couche</span></div>
+          <div class="step"><span class="snum">3</span><div class="sbody"><div class="st2">Mediheal Centella + Patches yeux (15–18 min)</div><p>Patches yeux d'abord. Sheet mask Mediheal Centella du nez vers les bords, appuyer pour adhérer. <span class="hl">Immédiatement : transition vers l'Acte III (massage mains + bras).</span> 2–3 dernières min : presser légèrement le masque sur place pour faire pénétrer l'essence centella.</p></div><span class="stag tj">3ème couche</span></div>
+          <div class="step"><span class="snum">4</span><div class="sbody"><div class="st2">Crème EviDenS Renaissance — Finition (2 min)</div><p>Retirer le masque par le bas. Ne pas rincer — masser le résidu d'essence centella par tamponnement ascendant. Retirer les patches. Crème EviDenS Renaissance (pivoine Kyoto, santal blanc) en effleurage ascendant. Le visage est nourri, lumineux, prêt.</p></div><span class="stag tj">Finition</span></div>
+        </div>
+        <div class="info">
+          <div class="it">✦ L'intelligence du timing Hanashi</div>
+          <p>Pendant les 15–18 min du masque Mediheal : <span class="hl">Acte III complet (mains + bras 20 min)</span>. Zéro temps mort. 2 heures de rituel sans précipitation — c'est l'intelligence de ce protocole.</p>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(6)">← Précédent</button>
+        <button class="btn p" onclick="nxt(6)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 8 — MAINS & BRAS -->
+    <section class="mod" id="m7">
+      <div class="hero">
+        <div class="hk">手</div>
+        <div class="ht">Module 08 · Acte III</div>
+        <h1 class="hti">Massage mains & bras<br><em>poignet → épaule — 20 min</em></h1>
+        <p class="hi">Pendant le sheet mask Mediheal. Hera coréen · Gommage maison · Aesop Resurrection · Points PC6, LU5, LI15 · Drainage gouttière bicipitale.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Anatomie des mains & bras — zones clés</h2>
+        <div class="grid">
+          <div class="card"><div class="ci">✋</div><div class="ct">Main — 27 os</div><p>Muscles thénar/hypothénar (paume), espaces interdigitaux, articulations MCP, poignet, face dorsale (tendons extenseurs). Point réflexe plexus solaire au centre de la paume.</p></div>
+          <div class="card"><div class="ci">💪</div><div class="ct">Avant-bras</div><p>Gouttière cubitale (drainage lymphatique), muscles fléchisseurs/extenseurs, point PC6 Neiguan (2 travers de doigt au-dessus du poignet — anxiété, nausée).</p></div>
+          <div class="card"><div class="ci">🎯</div><div class="ct">Points énergétiques</div><p>PC6 Neiguan (poignet) · LU5 Chize (pli du coude) · LI15 Jianyu (épaule). Méridiens Péricarde, Poumon, Gros Intestin. Sédation par pression statique 5–7 sec.</p></div>
+          <div class="card"><div class="ci">⬆️</div><div class="ct">Bras complet</div><p>Biceps brachial, triceps, grand pectoral. Drainage de la gouttière bicipitale (sillon entre biceps et triceps) → ganglions axillaires. Poignet → coude → épaule en une séquence continue.</p></div>
+        </div>
+
+        <h2 class="st">Protocole complet — 20 min simultané Acte II masque</h2>
+        <div class="steps">
+          <div class="proto-step">
+            <div class="pn">1</div>
+            <div class="pbody">
+              <div class="pt2">Gommage maison avec le Hera (2 min/main)</div>
+              <p>Sucre + argan + lavande appliqué avec le Hera coréen sur paume, dos, doigts, cuticules. Cercles 60 sec/main. Retirer avec serviette humide chaude. <span class="hl">Pression : 100–150g.</span></p>
+              <span class="poutil j">헤라 Hera coréen</span>
+            </div>
+            <span class="stag to ptag">Exfoliation</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">2</div>
+            <div class="pbody">
+              <div class="pt2">Effleurage à l'huile — sandwich main (1 min/main)</div>
+              <p>Huile tiède. Envelopper la main dans les deux paumes (sandwich). 5 passes paume→doigts, 5 passes poignet→doigts face dorsale. Connexion initiale avec la main.</p>
+            </div>
+            <span class="stag to ptag">Huile</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">3</div>
+            <div class="pbody">
+              <div class="pt2">Pétrissage de la paume (1 min 30/main)</div>
+              <p>Pouces en rotation sur thénar et hypothénar. <span class="hl">Pression : 250–350g.</span> Couvrir toute la surface palmaire. 3 pressions statiques au centre (plexus solaire, 5 sec chacune). Travaille les 30+ muscles intrinsèques de la main.</p>
+            </div>
+            <span class="stag tr ptag">Profond</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">4</div>
+            <div class="pbody">
+              <div class="pt2">Travail des doigts + PC6 poignet (1 min/main)</div>
+              <p>Chaque doigt : traction douce + rotation → pétrissage pouce-index longueur → traction finale 3 sec (150g). Pouce vers auriculaire. Terminer par pression statique PC6 Neiguan (2 travers de doigt au-dessus poignet, 5–7 sec, 300g) — calme le système nerveux, réduit l'anxiété.</p>
+            </div>
+            <span class="stag tr ptag">PC6</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">5</div>
+            <div class="pbody">
+              <div class="pt2">Avant-bras — gouttière cubitale + LU5 (2 min/bras)</div>
+              <p>Effleurage poignet → coude (face dorsale et palmaire). Pétrissage muscles fléchisseurs. Drainage gouttière cubitale (légère pression glissée entre muscle et os). Terminer par pression statique LU5 Chize au pli du coude (5–7 sec, 250g) — fortifie le poumon, drains les bras.</p>
+            </div>
+            <span class="stag tj ptag">LU5</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">6</div>
+            <div class="pbody">
+              <div class="pt2">Bras complet — biceps + LI15 épaule (1 min/bras)</div>
+              <p>Effleurage coude → épaule face antérieure. Pétrissage léger du biceps brachial. Drainage de la gouttière bicipitale vers les ganglions axillaires. Terminer par pression statique LI15 Jianyu (épaule, dépression sous l'acromion, 5 sec, 200g) — mobilise l'épaule, libère les tensions cervico-scapulaires.</p>
+            </div>
+            <span class="stag tj ptag">LI15</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">7</div>
+            <div class="pbody">
+              <div class="pt2">Application crème Aesop Resurrection avec Hera + masque (3 min)</div>
+              <p>Crème Aesop Resurrection appliquée avec le Hera coréen (geste ritualisé visible). Enfiler gants plastique. Serviette chaude par-dessus. 5 min de pose pendant début de l'Acte IV. Les 2–3 dernières minutes : retour au masque Mediheal sur le visage (presser légèrement pour faire pénétrer).</p>
+              <span class="poutil j">헤라 Hera + Aesop Resurrection</span>
+            </div>
+            <span class="stag to ptag">Masque</span>
+          </div>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(7)">← Précédent</button>
+        <button class="btn p" onclick="nxt(7)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 9 — PIEDS -->
+    <section class="mod" id="m8">
+      <div class="hero">
+        <div class="hk">足</div>
+        <div class="ht">Module 09 · Acte IV</div>
+        <h1 class="hti">Réflexologie<br><em>& soin des pieds — 15 min (sans bain)</em></h1>
+        <p class="hi">Serviette chaude humide + HE · Bâton Hinoki cyprès japonais · Réflexologie KD1 · Nuxe Rêve de Miel · Hera coréen.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Acte IV — sans bain de pieds (adaptation table de soin)</h2>
+        <div class="info j">
+          <div class="it">📋 Décision protocole</div>
+          <p>Le bain de pieds n'est pas possible sur table de soin allongée. La <span class="hlj">serviette éponge chaude humide (55–60°C) + HE menthe + eucalyptus</span> apporte la même efficacité : ouverture des pores, détente musculaire, préparation à l'absorption. 2 min par pied = équivalent fonctionnel.</p>
+        </div>
+
+        <h2 class="st">Protocole complet — 15 min</h2>
+        <div class="steps">
+          <div class="proto-step">
+            <div class="pn">1</div>
+            <div class="pbody">
+              <div class="pt2">Serviette chaude humide + HE (4 min)</div>
+              <p>Serviette éponge humide chauffée à 55–60°C (eau chaude ou micro-ondes). Déposer 3 gouttes HE menthe poivrée + 2 gouttes HE eucalyptus. Envelopper chaque pied 2 min. Le bâton Hinoki peut être posé à l'intérieur de la serviette pour infuser légèrement son parfum.</p>
+              <span class="poutil">檜 Bâton Hinoki</span>
+            </div>
+            <span class="stag tr ptag">Chaleur</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">2</div>
+            <div class="pbody">
+              <div class="pt2">Gommage talons avec le Hera (1 min 30/pied)</div>
+              <p>Gommage exfoliant appliqué avec le Hera coréen (geste ritualisé). Cercles sur talons et plante. <span class="hl">Pression : 200–300g sur zones de dureté.</span> Retirer avec serviette. Sécher soigneusement entre les orteils.</p>
+              <span class="poutil j">헤라 Hera coréen</span>
+            </div>
+            <span class="stag to ptag">Gommage</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">3</div>
+            <div class="pbody">
+              <div class="pt2">Réflexologie bâton Hinoki (4 min/pied)</div>
+              <p>Réchauffer le bâton dans les mains — présenter son parfum à la cliente. Effleurage complet 3× → pétrissage plante pouces alternés 90 sec → <span class="hl">pression KD1 Yongquan</span> plante centrale (bâton, 5 sec, 400g) → traction rotation chaque orteil → drainage bord interne colonne vertébrale 5× → effleurage fermeture 3×. Le parfum d'α-pinène hinoki diffuse pendant tout le travail.</p>
+              <span class="poutil">檜 Bâton Hinoki</span>
+            </div>
+            <span class="stag tj ptag">Réflexologie</span>
+          </div>
+          <div class="proto-step">
+            <div class="pn">4</div>
+            <div class="pbody">
+              <div class="pt2">Crème Nuxe Rêve de Miel avec Hera + chaussettes (3 min)</div>
+              <p>Crème Nuxe Rêve de Miel (miel, karité) appliquée généreusement avec le Hera coréen. Talons et orteils. Chaussettes chaudes ou serviette. Retirer les gants masque mains simultanément, masser le résidu de crème Aesop. Transition silencieuse vers l'Acte V.</p>
+              <span class="poutil j">헤라 Hera + Nuxe Rêve de Miel</span>
+            </div>
+            <span class="stag to ptag">Soin</span>
+          </div>
+        </div>
+        <div class="info j">
+          <div class="it">📋 Contre-indications pieds</div>
+          <p>Ne pas pratiquer si : mycoses actives, plaies ouvertes, phlébite/thrombose, varices inflammatoires, neuropathie diabétique sévère, grossesse 1er et 3ème trimestres.</p>
+        </div>
+        <div class="div">Auto-évaluation</div>
+        <div class="quiz">
+          <div class="qq">Pourquoi utilise-t-on une serviette chaude humide à la place d'un bain de pieds dans Hanashi ?</div>
+          <div class="qo" onclick="ans(this,false,'q4','Non — la serviette chaude est au moins aussi efficace qu\'un bain pour les effets recherchés dans le protocole Hanashi.')">Parce que le bain de pieds est moins hygiénique</div>
+          <div class="qo" onclick="ans(this,true,'q4','Exact ✓ La table de soin allongée ne permet pas un bain de pieds pratique. La serviette éponge chaude à 55–60°C + HE menthe/eucalyptus apporte la même efficacité : ouverture des pores, détente musculaire, préparation à l\'absorption — sans logistique supplémentaire.')">La table allongée ne permet pas un bain — la serviette chaude + HE offre la même efficacité sans logistique</div>
+          <div class="qo" onclick="ans(this,false,'q4','Non — le bain de pieds existe bel et bien dans d\'autres formats de soins. La décision est purement pratique et protocolaire.')">Parce que le bain de pieds n'existe pas dans les traditions japonaises</div>
+          <div class="qfb" id="q4"></div>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(8)">← Précédent</button>
+        <button class="btn p" onclick="nxt(8)">Module suivant →</button>
+      </div>
+    </section>
+
+    <!-- MODULE 10 — PROTOCOLE COMPLET -->
+    <section class="mod" id="m9">
+      <div class="hero">
+        <div class="hk">全</div>
+        <div class="ht">Module 10 · Maîtrise</div>
+        <h1 class="hti">HANASHI 話<br><em>La partition complète — 2h · 150 €</em></h1>
+        <p class="hi">La minute par minute. Les 10 outils sacrés à chaque étape. Les 14 produits dans leur ordre exact. La partition du rituel maître.</p>
+      </div>
+      <div class="body">
+        <h2 class="st">Timeline minute par minute</h2>
+        <div class="tl">
+          <div class="tli"><div class="tlt">0:00–0:05</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Accueil</div><div class="tln">Installation & anamnèse</div><p>Accueillir, installer. Anamnèse rapide. Présentation cérémonieuse des outils. Rituel d'ouverture (paume front + occiput 10 sec).</p></div></div>
+          <div class="tli"><div class="tlt">0:05–0:08</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte I — Ouverture</div><div class="tln">Kenzan à sec · 剣山</div><p>Brossage circulaire 3 min. Prépare l'absorption de l'huile Makanai Tsubaki.</p></div></div>
+          <div class="tli"><div class="tlt">0:08–0:21</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte I — Vapeur</div><div class="tln">Huile Makanai + vapeur + Pierres Onsen · 温泉</div><p>Huile tiède (3 min) → vapeur 40–42°C (5 min) → pierres Onsen basalte sur épaules.</p></div></div>
+          <div class="tli"><div class="tlt">0:21–0:41</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte I — Kobido</div><div class="tln">Massage crânien Kobido — 20 min</div><p>Nuque → occiput → tempes → pariétal → frontal. Points GV20 Baihui, VB20 Fengchi, Yintang. Kobido alterné rapide 2 min.</p></div></div>
+          <div class="tli"><div class="tlt">0:41–0:42</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte I — Cérémonie</div><div class="tln">Masque Davines Oi dans le Bol Urushi · 漆器</div><p>Préparation visible et ritualisée. Présenter le bol à la cliente avant mélange.</p></div></div>
+          <div class="tli"><div class="tlt">0:42–0:57</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte I — Shampoing</div><div class="tln">Double shampoing Phytojoba + masque Davines Oi + nuque</div><p>Double Phytojoba (7 min) → masque Davines Oi + Pierres Onsen + nuque (8 min).</p></div></div>
+          <div class="tli"><div class="tlt">0:57–1:00</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte I — Finition</div><div class="tln">Kérastase + Peigne Tsuge + Hydrolat Makanai · 黄楊</div><p>Rinçage → Initialiste Kérastase → 7 passes Tsuge → Hydrolat Camélia Makanai.</p></div></div>
+          <div class="tli"><div class="tlt">1:00–1:03</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Transition</div><div class="tln">Peigne Gua Sha Love Chrome · 金製</div><p>Lame gua sha sur tempes et mâchoire. Présenter les cuillères froides. Transition fluide Acte I → II.</p></div></div>
+          <div class="tli"><div class="tlt">1:03–1:11</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte II — Nettoyage</div><div class="tln">Shu Uemura + Hada Labo + Cuillères Baegun · 숟가락</div><p>Double cleansing coréen Shu Uemura (5 min) → Hada Labo Gokujyun → cuillères froides Baegun (3 min).</p></div></div>
+          <div class="tli"><div class="tlt">1:11–1:36</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte II — Kobido + Sculpting</div><div class="tln">Kobido + Pierre Bian + Jade néphrite + Menard · 砭石 翡翠</div><p>Kobido facial (20 min) → drainage (3 min) → Pierre Bian gua sha + Menard (12 min) → jade froid (5 min).</p></div></div>
+          <div class="tli"><div class="tlt">1:36–1:55</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Actes II & III simultanés</div><div class="tln">Sheet mask Mediheal posé → Mains + bras complet + Hera · 헤라</div><p>Hada Labo + Menard + sheet mask Mediheal. Immédiatement : mains + bras 20 min (gommage → huile → paume → doigts → avant-bras → bras → PC6 → LU5 → LI15 → masque Aesop Resurrection + Hera). 2 dernières min : presser masque Mediheal visage.</p></div></div>
+          <div class="tli"><div class="tlt">1:55–2:00</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte II — Finition visage</div><div class="tln">EviDenS Renaissance + retrait masques</div><p>Retrait Mediheal + patches. Tamponner résidu centella. EviDenS Renaissance en effleurage ascendant. Retrait gants mains, masser résidu Aesop.</p></div></div>
+          <div class="tli"><div class="tlt">2:00–2:15</div><div class="tll"><div class="tld f"></div><div class="tlc"></div></div><div class="tlco"><div class="tlp">Acte IV — Pieds</div><div class="tln">Serviette chaude HE + Hinoki + Hera + Nuxe · 檜 헤라</div><p>Serviette chaude HE menthe/eucalyptus (4 min) → gommage Hera (3 min) → réflexologie bâton Hinoki (8 min, KD1) → Nuxe Rêve de Miel + Hera + chaussettes.</p></div></div>
+          <div class="tli"><div class="tlt">2:15–2:20</div><div class="tll"><div class="tld"></div></div><div class="tlco"><div class="tlp">Acte V — Retour</div><div class="tln">Rinçage masque crânien + Peigne Tsuge + Hydrolat + clôture mains</div><p>Retour au crâne. Rinçage masque Davines 37°C. Peigne Tsuge 7 passes. Hydrolat Camélia Makanai. Clôture mains seules en silence total. Tisane. Conseils post-soin.</p></div></div>
+        </div>
+
+        <div class="cit">"Hanashi — parce que chaque soin est une histoire.<br>Et chaque histoire commence par poser les mains."</div>
+
+        <h2 class="st">Récapitulatif — 10 instruments sacrés</h2>
+        <table class="tbl">
+          <thead><tr><th>Outil</th><th>Origine</th><th>Matière</th><th>Acte</th><th>Rôle · Produit associé</th></tr></thead>
+          <tbody>
+            <tr><td class="tn">剣山 Kenzan UKA</td><td>Japon</td><td>Silicone médical</td><td>I</td><td>Activation cuir chevelu à sec · Avant Makanai</td></tr>
+            <tr><td class="tn">温泉 Pierres Onsen</td><td>Japon</td><td>Basalte volcanique</td><td>I</td><td>Chaleur épaules & nuque · Pendant Davines Oi</td></tr>
+            <tr><td class="tn">漆器 Bol Urushi</td><td>Japon</td><td>Bois laqué urushi</td><td>I–II</td><td>Préparation cérémonieuse · Davines Oi masque</td></tr>
+            <tr><td class="tn">黄楊 Peigne Tsuge</td><td>Japon · Ère Edo</td><td>Buis japonais dense</td><td>I + V</td><td>Finition capillaire méditée · Après Kérastase</td></tr>
+            <tr><td class="tn">金製 Peigne Gua Sha</td><td>Japon-Corée</td><td>Métal doré antistatique</td><td>Transition</td><td>Pont Acte I→II · Temples et mâchoire</td></tr>
+            <tr><td class="tn">砭石 Pierre Bian</td><td>Chine / K-Beauty</td><td>Sibnite naturelle</td><td>II</td><td>Gua sha sculpting profond · Sérum Menard</td></tr>
+            <tr><td class="tn">翡翠 Jade Néphrite</td><td>Corée</td><td>Jade néphrite véritable</td><td>II</td><td>Finition drainante froide · Après Bian</td></tr>
+            <tr><td class="tn">숟가락 Cuillères Baegun</td><td>Corée · Joseon</td><td>Inox chirurgical</td><td>II</td><td>Décongestionnement visage · Après Hada Labo</td></tr>
+            <tr><td class="tn">헤라 Hera spatule</td><td>Corée</td><td>Bambou / corne</td><td>III–IV</td><td>Application rituelle · Aesop + Nuxe + gommage</td></tr>
+            <tr><td class="tn">檜 Bâton Hinoki</td><td>Japon · Temples</td><td>Cyprès japonais sacré</td><td>IV</td><td>Réflexologie + parfum α-pinène · KD1 Yongquan</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="st">Les 14 produits dans leur ordre exact</h2>
+        <table class="tbl">
+          <thead><tr><th>Produit · Marque</th><th>Acte</th><th>Usage</th><th>Coût/soin</th></tr></thead>
+          <tbody>
+            <tr><td class="tn">Huile Tsubaki · Makanai</td><td>I</td><td>Huile de prétraitement + massage Kobido</td><td>~0,80 €</td></tr>
+            <tr><td class="tn">Shampoing Phytojoba · Phyto</td><td>I</td><td>Double shampoing rituel</td><td>~0,55 €</td></tr>
+            <tr><td class="tn">Masque Oi · Davines</td><td>I</td><td>Masque capillaire 8 min dans bol Urushi</td><td>~0,88 €</td></tr>
+            <tr><td class="tn">Sérum Initialiste · Kérastase</td><td>I</td><td>Finition cuir chevelu après rinçage</td><td>~1,47 €</td></tr>
+            <tr><td class="tn">Hydrolat Camélia · Makanai</td><td>I + V</td><td>Finition olfactive + Acte V clôture</td><td>~0,65 €</td></tr>
+            <tr><td class="tn">Osmosis Oil · Shu Uemura</td><td>II</td><td>1er cleansing coréen</td><td>~1,25 €</td></tr>
+            <tr><td class="tn">Gokujyun Lotion · Hada Labo</td><td>II</td><td>Tonique 1ère couche K-Beauty</td><td>~0,22 €</td></tr>
+            <tr><td class="tn">Embellir Sérum · Menard</td><td>II</td><td>Sérum sakura 2ème couche + gua sha Bian</td><td>~3,75 €</td></tr>
+            <tr><td class="tn">Sheet Mask Centella · Mediheal</td><td>II</td><td>Masque tissu 15–18 min (simultané mains)</td><td>~3,00 €</td></tr>
+            <tr><td class="tn">Crème Renaissance · EviDenS</td><td>II</td><td>Finition hydratante après masque</td><td>~3,00 €</td></tr>
+            <tr><td class="tn">Gommage sucre+argan+lavande · Maison</td><td>III</td><td>Exfoliation mains avec le Hera</td><td>~0,25 €</td></tr>
+            <tr><td class="tn">Resurrection Crème · Aesop</td><td>III</td><td>Masque mains sous gants + Hera</td><td>~1,57 €</td></tr>
+            <tr><td class="tn">HE menthe + eucalyptus · Pures</td><td>IV</td><td>Serviette chaude pieds (sans bain)</td><td>~0,30 €</td></tr>
+            <tr><td class="tn">Rêve de Miel · Nuxe</td><td>IV + V</td><td>Soin pieds avec Hera + chaussettes</td><td>~0,80 €</td></tr>
+          </tbody>
+        </table>
+
+        <h2 class="st">Tarification & offres</h2>
+        <div class="grid">
+          <div class="card"><div class="ci">🌿</div><div class="ct">Hanashi Initiation · 60 min</div><p>Head Spa + visage simplifié + mains. 5 outils. 90–110 €</p></div>
+          <div class="card"><div class="ci">話</div><div class="ct">Hanashi Signature · 90 min</div><p>Head Spa Kobido + Face sculpting + mains. 8 outils. 130–160 €</p></div>
+          <div class="card"><div class="ci">✦</div><div class="ct">Hanashi Maître · 2h</div><p>Rituel intégral. Les 10 outils sacrés. Les 14 produits. <strong style="color:var(--or-c)">150 €</strong></p></div>
+          <div class="card"><div class="ci">🎓</div><div class="ct">Formation praticienne</div><p>Transmettre Hanashi. 2 jours. Kit outils inclus (~300 €). 890 € par participante.</p></div>
+        </div>
+
+        <div class="info">
+          <div class="it">✦ La dernière phrase</div>
+          <p>Tu portes maintenant la connaissance complète du rituel Hanashi 話 — ses gestes, ses outils, ses origines, ses pressions, ses produits, ses silences. Mais le vrai rituel commence quand tu poses les mains et que les mots s'arrêtent. <span class="hl">L'histoire ne commence qu'à ce moment-là.</span></p>
+        </div>
+      </div>
+      <div class="mnav">
+        <button class="btn" onclick="prv(9)">← Précédent</button>
+        <button class="btn p" onclick="finish()">Terminer · HANASHI 話 ✦</button>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script>
+let cur=0;const total=10;const done=new Set();
+function enter(){
+  document.getElementById('splash').classList.add('out');
+  const a=document.getElementById('app');
+  a.style.display='flex';
+  setTimeout(()=>a.classList.add('on'),50);
+}
+function go(i){
+  document.querySelectorAll('.mod').forEach(m=>m.classList.remove('active'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  document.getElementById('m'+i).classList.add('active');
+  document.getElementById('n'+i).classList.add('active');
+  document.querySelector('.main').scrollTo({top:0,behavior:'smooth'});
+  cur=i;
+}
+function nxt(i){
+  done.add(i);
+  document.getElementById('c'+i).textContent='✓';
+  document.getElementById('n'+i).classList.add('done');
+  upd();
+  if(i+1<total)go(i+1);
+}
+function prv(i){if(i>0)go(i-1);}
+function upd(){
+  const p=(done.size/total)*100;
+  document.getElementById('pf').style.width=p+'%';
+  document.getElementById('pl').textContent=done.size+' / '+total+' modules';
+}
+function ans(btn,ok,id,msg){
+  const c=btn.closest('.quiz');
+  c.querySelectorAll('.qo').forEach(b=>b.disabled=true);
+  btn.classList.add(ok?'ok':'ko');
+  const f=document.getElementById(id);
+  f.textContent=msg;
+  f.className='qfb show '+(ok?'ok':'ko');
+}
+function finish(){
+  done.add(9);
+  document.getElementById('c9').textContent='✓';
+  document.getElementById('n9').classList.add('done');
+  upd();
+  setTimeout(()=>{
+    alert('✦ Formation HANASHI 話 — Édition Maître ✦\n\n10 modules · 10 outils sacrés · 14 produits · 2 heures · 150 €\n\n話 — L\'histoire que racontent les mains.\n花式 — La cérémonie de la fleur.\n\nTu portes maintenant les deux sens de ce nom,\net les instruments pour les incarner.\n\nHanashi t\'appartient. L\'histoire commence.');
+  },400);
+}
+</script>
+</body>
+</html>
